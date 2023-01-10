@@ -13,7 +13,7 @@
 
     a {
         text-decoration: none;
-        color:plum;
+        color: plum;
     }
 
     body {
@@ -30,7 +30,9 @@
 
     .create ul li input[type=id],
     .create ul li input[type=password],
-    .create ul li input[type=name] {
+    .create ul li input[type=name],
+    .create ul li input[type=e-mail],
+    .create ul li input[type=phonenumber] {
         font-size: 16px;
         margin-right: 50px;
         border: 2px solid black;
@@ -49,7 +51,7 @@
 </style>
 </head>
 <script>
-    function Submit(cid,cpasd,cname) {
+    function Submit(cid, cpasd, cname) {
         const myHeaders = new Headers()
         myHeaders.append("Content-Type", "application/json")
         let requestOptions = {
@@ -60,21 +62,21 @@
         requestOptions.body = JSON.stringify({
             id: cid, password: cpasd, name: cname,
         });
-        fetch(`https://db-api.amarea.cn/users?id=`+cid, requestOptions)
+        fetch(`https://db-api.amarea.cn/users?id=` + cid, requestOptions)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
             })
             .catch(err => console.log(err))
     }
-    function add(){
-    let ID = document.getElementById("username").value;
-    console.log(ID);
-    let Pasd = document.getElementById("passWord").value;
-    console.log(Pasd);
-    let NC = document.getElementById("ncname").value;
-    console.log(NC);
-        Submit(ID,Pasd,NC)
+    function Add() {
+        let ID = document.getElementById("username").value;
+        console.log(ID);
+        let Pasd = document.getElementById("passWord").value;
+        console.log(Pasd);
+        let NC = document.getElementById("ncname").value;
+        console.log(NC);
+        Submit(ID, Pasd, NC)
     }
 </script>
 
@@ -82,11 +84,15 @@
     <form class="create">
         <h2>注册</h2>
         <ul>
-            <li>用户名：<input type="id" id="username"></li>
-            <li>密&emsp;码：<input type="password" id="passWord"></li>
-            <li>昵&emsp;称：<input type="name" id="ncname"></li>
-            <li><input type="button" value="注册" onclick="add(this)"></li>
-            <li>已有帐号？<a href="index.html">点击登录</a></li>
+            <li>用户名:&emsp;<input type="id" id="username"></li>
+            <li>密&emsp;码:&emsp;<input type="password" id="passWord"></li>
+            <li>昵&emsp;称:&emsp;<input type="name" id="ncname"></li>
+            <li>邮&emsp;箱:&emsp;<input type="e-mail" id="mail"></li>
+            <li>手机号:&emsp;<input type="phonenumber" id="pn"></li>
+            <li>性&emsp;别:&emsp;男<input type="radio" name="sex" checked="true" style="width: 100px;">女<input type="radio"
+                    name="sex" style="width: 100px;"></li>
+            <li><input type="button" value="注册" onclick="Add(this)"></li>
+            <li>已有帐号？<a href="login.html">点击登录</a></li>
         </ul>
 
 
