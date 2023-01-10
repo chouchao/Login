@@ -89,13 +89,15 @@
         th {
             border: 1px solid black;
         }
+
         #ab {
             position: absolute;
             margin-left: 1060px;
             height: 40px;
             width: 40px;
-            color:deeppink;
+            color: deeppink;
         }
+
         #Name {
             position: absolute;
             margin-left: 1100px;
@@ -103,6 +105,12 @@
             border: 1px solid black;
             text-align: center;
             color: deeppink;
+        }
+
+        #setting {
+            position: absolute;
+            margin-left: 1220px;
+            border: 1px solid black;
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -193,7 +201,7 @@
         function addrow(a) {                                                    //创建
             let ta = document.getElementById('ta');
             let tm = document.getElementById('main');
-            let tse=document.getElementById('badd');
+            let tse = document.getElementById('badd');
             let th = document.getElementById('add');
             let tf = document.getElementById('del');
             let tfi = document.getElementById('up');
@@ -211,19 +219,19 @@
             tdse.innerHTML = tse.innerHTML;
             tra.appendChild(tdse);
 
-            let tdt = document.createElement('td');                             
+            let tdt = document.createElement('td');
             tdt.innerHTML = th.innerHTML;
             tra.appendChild(tdt);
 
-            let tdf = document.createElement('td');                            
+            let tdf = document.createElement('td');
             tdf.innerHTML = tf.innerHTML;
             tra.appendChild(tdf);
 
-            let tdfi = document.createElement('td');                            
+            let tdfi = document.createElement('td');
             tdfi.innerHTML = tfi.innerHTML;
             tra.appendChild(tdfi);
 
-            let tds = document.createElement('td');                             
+            let tds = document.createElement('td');
             tds.innerHTML = ts.innerHTML;
             tra.appendChild(tds);
 
@@ -251,26 +259,26 @@
             tdse.innerHTML = tse.innerHTML;
             tra.appendChild(tdse);
 
-            let tdt = document.createElement('td');                             
+            let tdt = document.createElement('td');
             tdt.innerHTML = th.innerHTML;
             tra.appendChild(tdt);
 
-            let tdf = document.createElement('td');                             
+            let tdf = document.createElement('td');
             tdf.innerHTML = tf.innerHTML;
             tra.appendChild(tdf);
 
-            let tdfi = document.createElement('td');                            
+            let tdfi = document.createElement('td');
             tdfi.innerHTML = tfi.innerHTML;
             tra.appendChild(tdfi);
 
-            let tds = document.createElement('td');                             
+            let tds = document.createElement('td');
             tds.innerHTML = ts.innerHTML;
             tra.appendChild(tds);
 
-            ta.tBodies[0].insertBefore(tra,tra);
+            ta.tBodies[0].insertBefore(tra, tra);
             edit("ta");
         }
-        function Replace(){
+        function Replace() {
             let replace = window.sessionStorage.getItem("rName");
             let name = document.getElementById("Name");
             name.innerHTML = replace;
@@ -341,6 +349,7 @@
     </table>
     <class id="ab">昵称:</class>
     <class id="Name"></class>
+    <class id="setting"><a href=setting.html>修改密码</a></class>
 </body>
 
 </html>
