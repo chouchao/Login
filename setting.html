@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修改</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: darksalmon;
+        }
+
+        body {
+            width: 1000px;
+            background-color: white;
+        }
+
+        .set {
+            margin-left: 510px;
+            width: 500px;
+            text-align: center;
+            margin-top: 250px;
+            border: 3px solid black;
+        }
+
+        .set ul li input[type=id],
+        .set ul li input[type=apassword],
+        .set ul li input[type=bpassword] {
+            font-size: 10px;
+            margin-right: 50px;
+            border: 2px solid black;
+        }
+
+        .set ul li input {
+            width: 275px;
+            height: 40px;
+            margin-top: 20px;
+        }
+
+        .set ul li input[type=button] {
+            width: 100px;
+            height: 40px;
+        }
+    </style>
+</head>
+<script>
+    function ChangeUserData(cid, cpasd) {
+        const myHeaders = new Headers()
+        myHeaders.append("Content-Type", "application/json")
+        let requestOptions = {
+            method: "PUT",
+            headers: myHeaders,
+            redirect: "follow",
+        }
+        const userData = {
+            id: cid,
+            password: cpasd,
+        }
+        requestOptions.body = JSON.stringify(userData);
+        fetch(`https://db-api.amarea.cn/users?id=`+cid, requestOptions)
+            .then(response => console.log("保存数据成功"))
+            .catch(err => console.log(err));
+    }
+    function Add() {
+            let ID = document.getElementById("username").value;
+            console.log(ID);
+            let aPasd = document.getElementById("one").value;
+            console.log(aPasd);
+            let bPasd = document.getElementById("two").value;
+            console.log(bPasd);
+            if(aPasd == bPasd){
+                ChangeUserData(ID,aPasd)
+            }
+            else {
+                alert("两次密码输入不相符,请重新输入")
+            }
+    }
+</script>
+
+<body>
+    <form class="set">
+        <h2>修改密码</h2>
+        <ul>
+            <li>对应用户名：<input type="id" id="username"></li>
+            <li>
+                新&emsp;密&emsp;码：<input type="apassword" id="one">
+            </li>
+            <li>
+                重复新密码：<input type="bpassword" id="two">
+            </li>
+            <li><input type="button" value="修改" onclick="Add(this)"></li>
+        </ul>
+    </form>
+</body>
+
+</html>
